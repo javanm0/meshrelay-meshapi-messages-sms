@@ -57,7 +57,7 @@ app.use(express.json());
 app.get('/api/sms', async (req, res) => {
   try {
     await connectToDatabase();
-    const SMSs = await SMS.find({});
+    const SMSs = await SMS.find({ messageSent: false });
     console.log('Successfully fetched SMS messages:', SMSs);
     res.json(SMSs);
   } catch (error) {
